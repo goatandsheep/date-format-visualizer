@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/turretcss/dist/turretcss.min.css" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"
+        integrity="sha512-qSnlnyh7EcD3vTqRoSP4LYsy2yVuqqmnkM9tW4dWo6xvAoxuVXyM36qZK54fyCmHoY1iKi9FJAUZrlPqmGNXFw=="
+        crossorigin="anonymous"></script>
+    <title>Date Format Visualizer</title>
+</head>
+
+<body class="container">
+    <h1>Date Format Visualizer</h1>
+    <form>
+        <p class="field">
+            <label for="format-input">Date Format String</label>
+            <input placeholder="e.g. 'MMM'" id="format-input" type="text" oninput="changeInput(event)">
+        </p>
+        <p class="field">
+            <label for="date-output">Formatted Date</label>
+            <p class="display-title" id="date-output">Enter Format above</p>
+        </p>
+    </form>
+    <script>
+        let momentTemp = {}
+        window.onload = function init() {
+        }
+        function changeInput(event) {
+            const now = moment()
+            const val = document.getElementById('format-input').value
+            document.getElementById('date-output').innerHTML = now.format(val)
+        }
+    </script>
+</body>
+
+</html>
