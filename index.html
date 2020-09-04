@@ -25,14 +25,29 @@
         </p>
     </form>
     <script>
-        let momentTemp = {}
+        let format = {}
         window.onload = function init() {
+            let query = queryObject(window.location.search);
+            if (query.format) {
+                document.getElementById('format-input').value = query.format
+                changeInput(query.format)
+            }
         }
         function changeInput(event) {
             const now = moment()
             const val = document.getElementById('format-input').value
             document.getElementById('date-output').innerHTML = now.format(val)
         }
+        
+      function queryObject(queryString) {
+        let queryStrings = queryString.replace("?", "").split("&");
+        let query = {};
+        for (let i = 0, len = queryStrings.length; i < len; i++) {
+          const parts = queryStrings[i].split("=");
+          query[parts[0]] = parts[1];
+        }
+        return query;
+      }
     </script>
 </body>
 
