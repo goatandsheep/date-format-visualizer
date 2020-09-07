@@ -17,7 +17,7 @@
     <form>
         <p class="field">
             <label for="format-input">Date Format String</label>
-            <input placeholder="e.g. 'MMM'" id="format-input" type="text" oninput="changeInput(event)">
+            <input id="format-input" type="text" oninput="changeInput(event)" value="dddd, MMMM DD, YYYY, hh:mm:ss a">
         </p>
         <p class="field">
             <label for="date-output">Formatted Date</label>
@@ -28,9 +28,12 @@
         let format = {}
         window.onload = function init() {
             let query = queryObject(window.location.search);
+            const val = document.getElementById('format-input').value
             if (query.format) {
                 document.getElementById('format-input').value = query.format
                 changeInput(query.format)
+            } else if (val) {
+                changeInput(val)
             }
         }
         function changeInput(event) {
